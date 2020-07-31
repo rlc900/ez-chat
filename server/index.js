@@ -8,7 +8,18 @@ const router = require('./router');
 
 const app = express();
 const server = http.createServer(app);
+// created an instance of io
 const io = socketio(server);
+
+// socket that is connected to client side socket
+io.on('connection', (socket) => {
+  console.log('we have a new connection!!!!!!!!!')
+
+  socket.on('disconnect', () => {
+    console.log('user just left!!!!!!!')
+  })
+});
+
 
 app.use(router);
 
