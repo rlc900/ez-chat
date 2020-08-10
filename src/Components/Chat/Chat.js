@@ -20,7 +20,16 @@ function Chat({location}) {
     setName(name)
     setRoom(room)
 
-    socket.emit('join', { name, room });
+    socket.emit('join', { name, room } () => {
+
+    });
+
+    return () => {
+      socket.emit('disconnect')
+
+      // turning an instance of a chat component off
+      socket.off();
+    }
 
   }, [ENDPOINT, location.search])
 
