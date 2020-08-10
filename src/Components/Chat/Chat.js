@@ -17,8 +17,6 @@ function Chat({location}) {
     // passing an endpoint to the server
     socket = io(ENDPOINT)
 
-    console.log(name, room)
-
     setName(name)
     setRoom(room)
 
