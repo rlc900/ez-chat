@@ -14,7 +14,7 @@ function Join() {
         <h1 className='heading'>Join</h1>
         <div><input placeholder='Name' className='joinInput' type='text' onChange={(evt) => setName(evt.target.value)}/></div>
         <div><input placeholder='Room' className='joinInput mt-20' type='text' onChange={(evt) => setRoom(evt.target.value)}/></div>
-          <Link onClick={event => (!name || !room) ? event.preventDefault() : null} to={`/chat?name=${name}&=${room}`}>
+          <Link onClick={event => (!name || !room) ? event.preventDefault() : null} to={`/chat?name=${name}&room=${room}`}>
           <button className='button mt-20' type='submit'>Sign In</button>
           </Link>
       </div>

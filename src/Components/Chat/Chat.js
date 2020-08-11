@@ -7,7 +7,7 @@ import './Chat.css'
 
 let socket;
 
-function Chat({location}) {
+const Chat = ({location}) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [message, setMessage] = useState('');
@@ -18,34 +18,53 @@ function Chat({location}) {
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
+    console.log(name, room)
     // passing an endpoint to the server
     socket = io(ENDPOINT)
 
-    setName(name)
-    setRoom(room)
+    setName(name);
+    setRoom(room);
 
-    socket.emit('join', { name, room });
+    socket.emit('join', { name, room }, () => {
+
+    });
 
     return () => {
       socket.emit('disconnect')
-
       // turning an instance of a chat component off
       socket.off();
     }
-
-  }, [ENDPOINT, location.search])
+  }, [ENDPOINT, location.search]);
 
 
   useEffect(() => {
     socket.on('message', (message) => {
-      setMessagesArr(...messagesArr, message)
+      setMessagesArr(...messagesArr, message);
     })
   }, [messagesArr])
 
   // func for sending messages
+  const sendMessage = (evt) => {
+    evt.preventDefault();
+
+    if (message) {
+      socket.emit('sendMessage', message, () => setMessage(''))
+    }
+  }
+
+  console.log(message, messagesArr)
 
   return (
-    <h1>Chat</h1>
+    <div className='outerContainer'>
+      <div className='container'>
+        <input
+        value={message}
+        onChange={(evt) => setMessage(evt.target.value)}
+        onKeyPress={evt => evt.key === 'Enter' ? sendMessage(evt) : null}
+        />
+
+      </div>
+    </div>
   )
 }
 

@@ -3,8 +3,8 @@
 const users = [];
 
 const addUser = ({id, name, room}) => {
-  name = name.trim().toLowerCase()
-  room = room.trim().toLowerCase()
+  name = name.replace(/\s/g, '').toLowerCase()
+  room = room.replace(/\s/g, '').toLowerCase()
 
   // if user is trying sign up again using the same information
   const existingUser = users.find((user) => user.room === room && user.name === name);
