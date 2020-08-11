@@ -3,7 +3,6 @@ import ChatHeader from '../ChatHeader/ChatHeader.js'
 // this module will help retrieve data from URL
 import queryString from 'query-string';
 import io from 'socket.io-client';
-
 import './Chat.css'
 
 let socket;
@@ -58,7 +57,7 @@ const Chat = ({location}) => {
   return (
     <div className='outerContainer'>
       <div className='container'>
-        <ChatHeader />
+        <ChatHeader room={room}/>
         {/*<input
         value={message}
         onChange={(evt) => setMessage(evt.target.value)}
