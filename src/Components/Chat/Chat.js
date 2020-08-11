@@ -10,6 +10,10 @@ let socket;
 function Chat({location}) {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
+  const [message, setMessage] = useState('');
+  // store all messages
+  const [messagesArr, setMessagesArr] = useState([])
+
   const ENDPOINT = 'localhost:5000'
 
   useEffect(() => {
@@ -30,6 +34,15 @@ function Chat({location}) {
     }
 
   }, [ENDPOINT, location.search])
+
+
+  useEffect(() => {
+    socket.on('message', (message) => {
+      setMessagesArr(...messagesArr, message)
+    })
+  }, [messagesArr])
+
+  // func for sending messages
 
   return (
     <h1>Chat</h1>
