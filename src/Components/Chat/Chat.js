@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ChatHeader from '../ChatHeader/ChatHeader.js'
 // this module will help retrieve data from URL
 import queryString from 'query-string';
 import io from 'socket.io-client';
@@ -39,7 +40,7 @@ const Chat = ({location}) => {
 
   useEffect(() => {
     socket.on('message', (message) => {
-      setMessagesArr(...messagesArr, message);
+      setMessagesArr([...messagesArr, message]);
     })
   }, [messagesArr])
 
@@ -57,11 +58,12 @@ const Chat = ({location}) => {
   return (
     <div className='outerContainer'>
       <div className='container'>
-        <input
+        <ChatHeader />
+        {/*<input
         value={message}
         onChange={(evt) => setMessage(evt.target.value)}
         onKeyPress={evt => evt.key === 'Enter' ? sendMessage(evt) : null}
-        />
+        />*/}
 
       </div>
     </div>
