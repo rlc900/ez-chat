@@ -59,7 +59,7 @@ const Chat = ({location}) => {
     <div className='outerContainer'>
       <div className='container'>
         <ChatHeader room={room}/>
-        <Input />
+        <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
 
       </div>
     </div>
