@@ -1,9 +1,10 @@
 import React from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
+import Message from '../Message/Message.js'
 import './Messages.css';
 
 const Messages = ({messagesArr, name}) => (
-    <ScrollToBottom>
+    <ScrollToBottom className='messages'>
       {messagesArr.map((message, i) => <div key={i}><Message message={message} name={name}/></div>)}
     </ScrollToBottom>
 );
