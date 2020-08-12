@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ChatHeader from '../ChatHeader/ChatHeader.js'
 import Input from '../Input/Input.js'
+import Messages from '../Messages/Messages.js'
 // this module will help retrieve data from URL
 import queryString from 'query-string';
 import io from 'socket.io-client';
@@ -59,6 +60,7 @@ const Chat = ({location}) => {
     <div className='outerContainer'>
       <div className='container'>
         <ChatHeader room={room}/>
+        <Messages messagesArr={messagesArr} name={name}/>
         <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
 
       </div>
