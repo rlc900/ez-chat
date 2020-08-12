@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ChatHeader from '../ChatHeader/ChatHeader.js'
 import Input from '../Input/Input.js'
 import Messages from '../Messages/Messages.js'
+import TextContainer from '../TextContainer/TextContainer.js'
 // this module will help retrieve data from URL
 import queryString from 'query-string';
 import io from 'socket.io-client';
@@ -13,6 +14,7 @@ const Chat = ({location}) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [message, setMessage] = useState('');
+  const [users, setUsers] = useState('');
   // store all messages
   const [messagesArr, setMessagesArr] = useState([])
 
@@ -42,7 +44,11 @@ const Chat = ({location}) => {
   useEffect(() => {
     socket.on('message', (message) => {
       setMessagesArr([...messagesArr, message]);
-    })
+    });
+
+    socket.on('roomData', ({users}) => {
+      setUsers(users);
+    });
   }, [messagesArr])
 
   // func for sending messages
@@ -62,8 +68,8 @@ const Chat = ({location}) => {
         <ChatHeader room={room}/>
         <Messages messagesArr={messagesArr} name={name}/>
         <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
-
       </div>
+      <TextContainer users={users}/>
     </div>
   )
 }
