@@ -17,14 +17,14 @@ const io = socketio(server);
 io.on('connection', (socket) => {
   socket.on('join', ({ name, room }, callback) => {
     const {error, user} = addUser({ id: socket.id, name, room });
+    // console.log(user.name)
 
     if (error) return callback(error);
-
+    socket.join(user.room);
     // this welcomes users to chat (admin generated message); happening on frontend
     socket.emit('message', {user: 'admin', text: `${user.name}, welcome to the room ${user.room}`})
     // socket.broadcast sends a message to everyone BUT the user
     socket.broadcast.to(user.room).emit('message', {user: 'admin', text: `${user.name} has joined!`})
-    socket.join(user.room);
     // logic to see which users are inside of room
     io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)})
     callback();
