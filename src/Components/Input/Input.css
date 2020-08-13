@@ -10,6 +10,7 @@
   width: 80%;
   font-size: 1.2em;
   font-family: 'Chilanka', cursive;
+  font-weight: bold;
 }
 
 input:focus, textarea:focus, select:focus{
