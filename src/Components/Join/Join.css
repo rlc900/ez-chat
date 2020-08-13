@@ -1,5 +1,5 @@
 html, body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Chilanka', cursive;
   padding: 0;
   margin: 0;
 }
@@ -29,6 +29,7 @@ html, body {
   border-radius: 0;
   padding: 15px 20px;
   width: 100%;
+  font-family: 'Chilanka', cursive;
 }
 
 .heading {
@@ -48,10 +49,12 @@ html, body {
     display: inline-block;
     border: none;
     width: 100%;
+    font-family: 'Chilanka', cursive;
 }
 
 .mt-20 {
   margin-top: 20px;
+  font-family: 'Chilanka', cursive;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
