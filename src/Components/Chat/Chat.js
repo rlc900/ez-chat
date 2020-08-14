@@ -22,7 +22,7 @@ const Chat = ({location}) => {
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
-    console.log(name, room)
+    // console.log(name, room)
     // passing an endpoint to the server
     socket = io(ENDPOINT)
 
@@ -60,7 +60,7 @@ const Chat = ({location}) => {
     }
   }
 
-  console.log(message, messagesArr)
+  // console.log(message, messagesArr)
 
   return (
     <div className='outerContainer'>
