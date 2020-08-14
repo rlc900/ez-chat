@@ -7,7 +7,6 @@ function Join() {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
 
-
   return (
     <div className='joinOuterContainer'>
       <div className='joinInnerContainer'>
@@ -18,7 +17,7 @@ function Join() {
           <button className='button mt-20' type='submit'>Sign In</button>
           </Link>
       </div>
-    </div>
+      </div>
   )
 }
 
