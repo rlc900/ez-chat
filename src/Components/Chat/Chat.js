@@ -18,7 +18,7 @@ const Chat = ({location}) => {
   // store all messages
   const [messagesArr, setMessagesArr] = useState([])
 
-  const ENDPOINT = 'localhost:5000'
+  const ENDPOINT = 'https://react-ez-chat.herokuapp.com/'
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search)
