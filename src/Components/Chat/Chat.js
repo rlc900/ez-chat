@@ -40,7 +40,7 @@ const Chat = ({location}) => {
     }
   }, [ENDPOINT, location.search]);
 
-
+  // handles messages; listens for messages
   useEffect(() => {
     socket.on('message', (message) => {
       setMessagesArr([...messagesArr, message]);
