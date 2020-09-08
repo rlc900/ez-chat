@@ -1,6 +1,18 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const socketio = require("socket.io");
 const http = require('http');
+
+
+const database = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
+
+mongoose.connect(database, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+})
+.then(() => console.log('DB CONNECTION SUCCESSFUL'));
+
 
 const {addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
 
