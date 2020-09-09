@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const express = require('express');
 const socketio = require("socket.io");
 const http = require('http');
+
+dotenv.config({ path: './config.env'})
 
 
 const database = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
