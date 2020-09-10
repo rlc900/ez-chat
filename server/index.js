@@ -16,29 +16,6 @@ mongoose.connect(database, {
 })
 .then(() => console.log('DB CONNECTION SUCCESSFUL'));
 
-const messageSchema = new mongoose.Schema({
-  user: {
-    type: String,
-    unique: true
-  },
-  text: {
-    type: String,
-    required: [true, 'You can\'t send an empty message!']
-  }
-})
-
-const Message = mongoose.model('Message', messageSchema)
-
-const testMessage = new Message({
-  user: 'rianna',
-  text: 'yo yo yoey vote for zoey'
-})
-
-testMessage.save().then((doc) => {
-  console.log(doc);
-}).catch(err => {
-  console.log("ERROR:", err);
-});
 
 const {addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
 
