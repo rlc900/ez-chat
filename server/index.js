@@ -18,7 +18,8 @@ mongoose.connect(database, {
 
 const messageSchema = new mongoose.Schema({
   user: {
-    type: String
+    type: String,
+    unique: true
   },
   text: {
     type: String,
@@ -26,7 +27,7 @@ const messageSchema = new mongoose.Schema({
   }
 })
 
-
+const Message = mongoose.model('Message', messageSchema)
 
 
 const {addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
