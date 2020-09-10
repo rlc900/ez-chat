@@ -29,6 +29,16 @@ const messageSchema = new mongoose.Schema({
 
 const Message = mongoose.model('Message', messageSchema)
 
+const testMessage = new Message({
+  user: 'rianna',
+  text: 'yo yo yoey vote for zoey'
+})
+
+testMessage.save().then((doc) => {
+  console.log(doc);
+}).catch(err => {
+  console.log("ERROR:", err);
+});
 
 const {addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
 
