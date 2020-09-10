@@ -60,7 +60,7 @@ const Chat = ({location}) => {
     }
   }
 
-  // console.log('ARRAY:', messagesArr)
+  console.log(users)
 
   return (
     <div className='outerContainer'>
