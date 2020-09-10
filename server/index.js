@@ -16,6 +16,18 @@ mongoose.connect(database, {
 })
 .then(() => console.log('DB CONNECTION SUCCESSFUL'));
 
+const messageSchema = new mongoose.Schema({
+  user: {
+    type: String
+  },
+  text: {
+    type: String,
+    required: true
+  }
+})
+
+
+
 
 const {addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
 
